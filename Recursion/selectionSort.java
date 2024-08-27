@@ -1,0 +1,29 @@
+package Recursion;
+
+import java.util.Arrays;
+
+public class selectionSort {
+    public static void main(String[] args) {
+        int[] arr = {5,1,10,3,2};
+        SS(arr, arr.length, 0,0);
+        System.out.println(Arrays.toString(arr));
+    }
+    static void SS(int[] arr, int row, int col, int max) {
+        if (row == 0) {
+            return;
+        }
+        if (col < row) {
+            if (arr[col] > arr[max]) {
+                SS(arr, row, col + 1, col);
+            }
+            else {
+                SS(arr,row,col+1,max);
+            }
+        } else {
+            int temp = arr[max];
+            arr[max] = arr[row - 1];
+            arr[row - 1] = temp;
+            SS(arr, row - 1, 0, max);
+        }
+    }
+}
